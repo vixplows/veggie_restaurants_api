@@ -18,8 +18,14 @@ app.get('/restaurants', function(req, res) {
 app.post('/restaurants', function(req, res) {
   db.collection('restaurants').save(req.body, function(err, result) {
     res.redirect('/');
-  })
-})
+  });
+});
+
+app.post('/delete', function(req, res) {
+  db.collection('restaurants').remove({}, function(err, results) {
+      res.redirect('/');
+  });
+});
 
 MongoClient.connect('mongodb://localhost:27017/vegetarian_restaurants', function(err, database) {
   if(err) {
