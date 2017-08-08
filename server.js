@@ -27,6 +27,11 @@ app.post('/delete', function(req, res) {
   });
 });
 
+// app.get('/reviews', function(req, res) {
+//   db.collection('restaurants').find().sort({"name":1}).toArray(function(err, results) {
+//   });
+// });
+
 MongoClient.connect('mongodb://localhost:27017/vegetarian_restaurants', function(err, database) {
   if(err) {
     console.log(err);

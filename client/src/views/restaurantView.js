@@ -1,4 +1,4 @@
-var RestaurantView= function(restaurants){
+var RestaurantView = function(restaurants){
   this.render(restaurants);
 }
 
@@ -10,7 +10,7 @@ RestaurantView.prototype = {
       var li = document.createElement('li');
       var text = document.createElement('p');
       var ul = document.getElementById('restaurants');
-      text.innerText = restaurant.name + ": " + restaurant.address
+      text.innerText = restaurant.name + ": " + restaurant.address + ", " + restaurant.postcode
       li.appendChild(text);
       ul.appendChild(li);
     });
