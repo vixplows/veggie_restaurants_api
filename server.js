@@ -9,11 +9,16 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 app.use(express.static('client/build'));
 
-app.get('/api/restaurants', function(req, res) {
+app.get('/restaurants', function(req, res) {
   db.collection('restaurants').find().toArray(function(err, results) {
     res.json(results);
-  })
+  });
+});
 
+app.post('/restaurants', function(req, res) {
+  db.collection('restaurants').save(req.body, function(err, result) {
+    res.redirect('/');
+  })
 })
 
 MongoClient.connect('mongodb://localhost:27017/vegetarian_restaurants', function(err, database) {

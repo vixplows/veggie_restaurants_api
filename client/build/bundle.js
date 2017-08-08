@@ -63,14 +63,40 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+var RestaurantView= function(restaurants){
+  this.render(restaurants);
+}
+
+RestaurantView.prototype = {
+  render: function(restaurants){
+    
+    console.log(restaurants);
+    restaurants.forEach( function(restaurant){
+      var li = document.createElement('li');
+      var text = document.createElement('p');
+      var ul = document.getElementById('restaurants');
+      text.innerText = restaurant.name + ": " + restaurant.address
+      li.appendChild(text);
+      ul.appendChild(li);
+    });
+  }
+}
+
+ module.exports = RestaurantView;
+ 
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var RestaurantView = __webpack_require__(1);
+var RestaurantView = __webpack_require__(0);
 
 var makeRequest = function(url, callback) {
   var request = new XMLHttpRequest();
@@ -88,38 +114,12 @@ var requestComplete = function() {
 }
 
 var app = function(){
-  var url = "http://localhost:3000/api/restaurants";
+  var url = "http://localhost:3000/restaurants";
   makeRequest(url, requestComplete);
 }
 
 
 window.addEventListener('load', app);
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-var RestaurantView= function(restaurants){
-  this.render(restaurants);
-}
-
-RestaurantView.prototype = {
-  render: function(restaurants){
-    
-    console.log(restaurants);
-    restaurants.forEach( function(restaurant){
-      var li = document.createElement('li');
-      var text = document.createElement('p');
-      var ul = document.getElementById('restaurants');
-      text.innerText = restaurant.name + ": " + '"' + restaurant.address + '"' + '"' + restaurant.rating + '"';
-      li.appendChild(text);
-      ul.appendChild(li);
-    });
-  }
-}
-
- module.exports = RestaurantView;
- 
 
 /***/ })
 /******/ ]);

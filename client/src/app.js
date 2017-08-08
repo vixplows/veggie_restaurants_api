@@ -16,7 +16,7 @@ var requestComplete = function() {
 }
 
 var app = function(){
-  var url = "http://localhost:3000/api/restaurants";
+  var url = "http://localhost:3000/restaurants";
   makeRequest(url, requestComplete);
 }
 
