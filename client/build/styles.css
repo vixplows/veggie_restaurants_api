@@ -1,13 +1,14 @@
 .container {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
+  padding: 5px;
 }
 
 .image_container {
-  float: center;
+  float: right;
   width:50%;
-  height:50%;
+  height:100%;
 }
 
 #veg-food-pic {
@@ -36,14 +37,19 @@ h1 {
   color: olivedrab;
 }
 
+ul {
+  padding: 0px;
+}
+
 li {
-  color: white;
+  color: olivedrab;
   font-family: arial;
   font-size: 16px;
+  list-style-type: none;
 }
 
 .list-container {
   width: 50%;
   height:433px;
-  background-color: darkseagreen;
+  background-color: white;
 }

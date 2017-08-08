@@ -10,7 +10,7 @@ app.use(parser.urlencoded({extended: true}));
 app.use(express.static('client/build'));
 
 app.get('/restaurants', function(req, res) {
-  db.collection('restaurants').find().toArray(function(err, results) {
+  db.collection('restaurants').find().sort({"name":1}).toArray(function(err, results) {
     res.json(results);
   });
 });
