@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Veg Restaurants Edi</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="bundle.js"></script>
+</head>
+<body>
+  <h1>Vegetarian Restaurants in Edinburgh</h1>
+<div class="container">
+<form >
+  <input type="text" placeholder="name" name="name">
+  <input type="text" placeholder="address" name="address">
+  <input type="text" placeholder="rating" name="rating">
+  <button type="submit">Submit</button>
+</form>
+<form action="/delete" method="POST">
+<button id="deleteButton" type="submit">Delete All</button>
+</form>
+</div>
+<div class="image_container">
+<img id="veg-food-pic" src="/images/veg_food.jpg" />
+</div>
+<div class="list-container">
+<ul id="Restaurants">
+</ul>
+</div>
+</body>
+</html>
