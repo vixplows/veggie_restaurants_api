@@ -27,6 +27,12 @@ app.post('/delete', function(req, res) {
   });
 });
 
+app.get('/ratings', function(req, res) {
+  db.collection('restaurants').find().sort({"rating":-1}).toArray(function(err, results) {
+    res.json(results);
+  });
+})
+
 MongoClient.connect('mongodb://localhost:27017/vegetarian_restaurants', function(err, database) {
   if(err) {
     console.log(err);
@@ -45,5 +51,4 @@ MongoClient.connect('mongodb://localhost:27017/vegetarian_restaurants', function
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/client/build/index.html');
-
 });

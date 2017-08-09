@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="bundle.js"></script>
 </head>
-<body>
+<body id='body'>
   <h1>Vegetarian Restaurants in Edinburgh</h1>
 <div class="container">
 <form action ="/restaurants" method="POST">
@@ -16,6 +16,7 @@
   <input type="text" placeholder="rating" name="rating">
   <button type="submit">Submit</button>
 </form>
+<button id="rating">Get Ratings</button>
 <form action="/delete" method="POST">
 <button id="deleteButton" type="submit">Delete All</button>
 </form>

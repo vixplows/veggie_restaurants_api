@@ -82,7 +82,7 @@ RestaurantView.prototype = {
       var li = document.createElement('li');
       var text = document.createElement('p');
       var ul = document.getElementById('restaurants');
-      text.innerText = restaurant.name + ": " + restaurant.address + ", " + restaurant.postcode
+      text.innerText = restaurant.name + ": " + restaurant.address + ", " + restaurant.postcode;
       li.appendChild(text);
       ul.appendChild(li);
     });
@@ -97,6 +97,7 @@ RestaurantView.prototype = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var RestaurantView = __webpack_require__(0);
+var RatingView = __webpack_require__(2);
 
 var makeRequest = function(url, callback) {
   var request = new XMLHttpRequest();
@@ -114,12 +115,57 @@ var requestComplete = function() {
 }
 
 var app = function(){
+  var button = document.querySelector('#rating');
+
+  button.addEventListener('click', function() {
+    var request = new XMLHttpRequest();
+    request.open("GET", '/ratings');
+    request.addEventListener("load", function(){
+      var body = document.querySelector('body');
+      body.innerHTML = '';
+      console.log(this.responseText);
+
+      var ratingString = this.responseText;
+      var ratings = JSON.parse(ratingString);
+      var ratingView = new RatingView(ratings);
+    });
+    request.send();
+  });
+
   var url = "http://localhost:3000/restaurants";
   makeRequest(url, requestComplete);
 }
 
 
 window.addEventListener('load', app);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var RatingView = function(restaurants) {
+  this.render(restaurants);
+}
+
+RatingView.prototype = {
+  render: function(restaurants) {
+
+    restaurants.forEach( function(restaurant){
+
+      var ul = document.createElement('ul')
+      console.log(ul)
+      var li = document.createElement('li');
+      var text = document.createElement('p');
+      var body = document.getElementById('body')
+      text.innerText = restaurant.name + ". Rating: " + restaurant.rating;
+      li.appendChild(text);
+      ul.appendChild(li);
+      body.appendChild(ul);
+    });
+  }
+}
+
+module.exports = RatingView;
 
 /***/ })
 /******/ ]);
